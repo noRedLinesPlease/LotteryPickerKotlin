@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LotteryPickerKotlin</string>
+    <string name="tab_text_1">Pick 3</string>
+    <string name="tab_text_2">Pick4</string>
+    <string name="tab_text_3">Cash 5</string>
+    <string name="tab_text_4">Mega Million</string>
+    <string name="tab_text_5">Power ball</string>
+    <string name="tab_text_6">Bank a Million</string>
+    <string name="tab_text_7">Cash 4 Life</string>
+</resources>
