@@ -1,9 +1,12 @@
 package com.example.lotterypickerkotlin.ui.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +21,8 @@ class PlaceholderFragment : Fragment() {
 
     private val pageViewModel by viewModels<PageViewModel>()
     private lateinit var gameNumbers: ArrayList<Int>
+    private lateinit var refreshButton: Button
+    var testing: Int = Utils.index
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,10 +39,21 @@ class PlaceholderFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_main, container, false)
         val recyclerView: RecyclerView = root.findViewById(R.id.ball_rv)
+        refreshButton = root.findViewById(R.id.refresh_button)
+        refreshButton.setOnClickListener {
+            updateNumbers()
+            recyclerView.adapter = BallListAdapter(gameNumbers)
+        }
+
         gameNumbers = pageViewModel.numbersList
         recyclerView.adapter = BallListAdapter(gameNumbers)
         recyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         return root
+    }
+
+    private fun updateNumbers() {
+        pageViewModel.getNumbersList()
+        gameNumbers = pageViewModel.numbersList
     }
 
     companion object {
@@ -55,7 +71,7 @@ class PlaceholderFragment : Fragment() {
         fun newInstance(sectionNumber: Int): PlaceholderFragment {
             return PlaceholderFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(ARG_SECTION_NUMBER, sectionNumber)
+                    putInt(ARG_SECTION_NUMBER, testing)
                 }
             }
         }

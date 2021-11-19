@@ -1,6 +1,8 @@
 package com.example.lotterypickerkotlin.ui.main
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -23,8 +25,9 @@ class TopTabSectionsAdapter(
     lifecycle: Lifecycle
 ) : FragmentStateAdapter(fm, lifecycle) {
 
-    fun getPageTitle(position: Int): CharSequence {
+    val index = Utils.index
 
+    fun getPageTitle(position: Int): CharSequence {
         return context.resources.getString(TAB_TITLES[position])
     }
 
@@ -33,6 +36,6 @@ class TopTabSectionsAdapter(
     }
 
     override fun createFragment(position: Int): Fragment {
-        return PlaceholderFragment.newInstance(position)
+        return PlaceholderFragment.newInstance(index)
     }
 }
