@@ -1,0 +1,45 @@
+package com.example.lotterypickerkotlin.fragments
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.lotterypickerkotlin.BallListAdapter
+import com.example.lotterypickerkotlin.GenerateBallNumbers
+import com.example.lotterypickerkotlin.R
+import com.example.lotterypickerkotlin.ui.main.PageViewModel
+
+class Pick4Fragment : Fragment() {
+
+    private lateinit var gameNumbers: ArrayList<Int>
+    private lateinit var refreshButton: Button
+    private lateinit var recyclerView: RecyclerView
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val root = inflater.inflate(R.layout.fragment_main, container, false)
+        recyclerView = root.findViewById(R.id.ball_rv)
+        refreshButton = root.findViewById(R.id.refresh_button)
+        refreshButton.setOnClickListener {
+            updateNumbers()
+            recyclerView.adapter = BallListAdapter(gameNumbers)
+        }
+
+        gameNumbers = GenerateBallNumbers().setPick4()
+        recyclerView.adapter = BallListAdapter(gameNumbers)
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+        return root
+    }
+
+    private fun updateNumbers() {
+        gameNumbers = GenerateBallNumbers().setPick4()
+        recyclerView.adapter = BallListAdapter(gameNumbers)
+    }
+}

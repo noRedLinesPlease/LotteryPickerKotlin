@@ -1,11 +1,11 @@
 package com.example.lotterypickerkotlin
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.example.lotterypickerkotlin.ui.main.PlaceholderFragment
+import com.example.lotterypickerkotlin.fragments.Cash5Fragment
+import com.example.lotterypickerkotlin.fragments.Pick3Fragment
+import com.example.lotterypickerkotlin.fragments.Pick4Fragment
 import com.example.lotterypickerkotlin.ui.main.TopTabSectionsAdapter
 import com.example.lotterypickerkotlin.ui.main.Utils
 import com.google.android.material.tabs.TabLayout
@@ -24,7 +24,12 @@ class MainActivity : AppCompatActivity() {
         tabs.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 Utils.index = tabs.selectedTabPosition
-                //sectionsPagerAdapter.createFragment(tabs.selectedTabPosition)
+                sectionsPagerAdapter.createFragment(tabs.selectedTabPosition)
+//                when(Utils.index){
+//                    0 -> Pick3Fragment()
+//                    1 -> Pick4Fragment()
+//                    2 -> Cash5Fragment()
+//                }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {}
