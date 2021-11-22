@@ -6,7 +6,7 @@ import com.example.lotterypickerkotlin.GenerateBallNumbers
 
 class PageViewModel : ViewModel() {
 
-    private val _index = MutableLiveData<Int>()
+     val _index = MutableLiveData<Int>()
      var numbersList = ArrayList<Int>()
 
     fun setIndex(index: Int) {
@@ -16,9 +16,10 @@ class PageViewModel : ViewModel() {
     fun getNumbersList() {
         val generateObject = GenerateBallNumbers()
         when(_index.value){
-            1 -> numbersList = generateObject.setPick3()
-            2 -> numbersList = generateObject.setPick4()
+            0 -> numbersList = generateObject.setPick3()
+            1 -> numbersList = generateObject.setPick4()
+            2 -> numbersList = generateObject.setCash5()
+            3 -> numbersList = generateObject.setMegaMillion()
+            }
         }
-
-    }
 }
