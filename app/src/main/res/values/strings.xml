@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">LotteryPickerKotlin</string>
+    <string name="title"> LotteryNumberPicker</string>
     <string name="tab_text_1">Pick 3</string>
     <string name="tab_text_2">Pick4</string>
     <string name="tab_text_3">Cash 5</string>

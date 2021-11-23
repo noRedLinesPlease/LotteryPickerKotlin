@@ -32,15 +32,23 @@ class GenerateBallNumbers : ArrayList<Int>() {
 
     fun setCash5(): ArrayList<Int> {
         gameNumberList.clear()
+        var index = 0
 
-        for (index in 0 until 5) {
+        while (index < 5){
             val number = Random.nextInt(1, 41)
-            gameNumberList.add(number)
+            val sameNumber = gameNumberList.contains(number)
+            if (!sameNumber){
+                gameNumberList.add(number)
+                index ++
+            }
+            else{
+                index --
+            }
         }
+        gameNumberList.sort()
         listSize = gameNumberList.size
 
         return gameNumberList
-
     }
 
     fun setMegaMillion(): ArrayList<Int> {
@@ -48,7 +56,7 @@ class GenerateBallNumbers : ArrayList<Int>() {
         var index = 0
 
         while (index < 6) {
-            if (index == 6) {
+            if (index == 5) {
                 val megaball = Random.nextInt(1, 25)
                 gameNumberList.add(megaball)
                 break
@@ -59,12 +67,67 @@ class GenerateBallNumbers : ArrayList<Int>() {
                 if (!sameNumber) {
                     gameNumberList.add(number)
                     index++
+                    gameNumberList.sort()
                 } else {
                     index--
                 }
             }
         }
-        gameNumberList.sort()
+
+        listSize = gameNumberList.size
+
+        return gameNumberList
+    }
+
+    fun setPowerball(): ArrayList<Int> {
+        gameNumberList.clear()
+        var index = 0
+
+        while (index < 6) {
+            if (index == 5) {
+                val powerball = Random.nextInt(1, 26)
+                gameNumberList.add(powerball)
+                break
+            }
+            val number = Random.nextInt(1, 69)
+            if (index >= 0) {
+                val sameNumber: Boolean = gameNumberList.contains(number)
+                if (!sameNumber) {
+                    gameNumberList.add(number)
+                    index++
+                    gameNumberList.sort()
+                } else {
+                    index--
+                }
+            }
+        }
+        listSize = gameNumberList.size
+
+        return gameNumberList
+    }
+
+    fun setCash4Life(): ArrayList<Int> {
+        gameNumberList.clear()
+        var index = 0
+
+        while (index < 6) {
+            if (index == 5) {
+                val cashball = Random.nextInt(1, 4)
+                gameNumberList.add(cashball)
+                break
+            }
+            val number = Random.nextInt(1, 60)
+            if (index >= 0) {
+                val sameNumber: Boolean = gameNumberList.contains(number)
+                if (!sameNumber) {
+                    gameNumberList.add(number)
+                    index++
+                    gameNumberList.sort()
+                } else {
+                    index--
+                }
+            }
+        }
         listSize = gameNumberList.size
 
         return gameNumberList

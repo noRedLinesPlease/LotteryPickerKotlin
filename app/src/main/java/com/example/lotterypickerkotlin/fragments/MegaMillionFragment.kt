@@ -12,8 +12,7 @@ import com.example.lotterypickerkotlin.BallListAdapter
 import com.example.lotterypickerkotlin.GenerateBallNumbers
 import com.example.lotterypickerkotlin.R
 
-class Pick4Fragment : Fragment() {
-
+class MegaMillionFragment : Fragment() {
     private lateinit var gameNumbers: ArrayList<Int>
     private lateinit var refreshButton: Button
     private lateinit var recyclerView: RecyclerView
@@ -27,17 +26,17 @@ class Pick4Fragment : Fragment() {
         refreshButton = root.findViewById(R.id.refresh_button)
         refreshButton.setOnClickListener {
             updateNumbers()
-            recyclerView.adapter = BallListAdapter(gameNumbers)
         }
 
-        gameNumbers = GenerateBallNumbers().setPick4()
+        gameNumbers = GenerateBallNumbers().setMegaMillion()
         recyclerView.adapter = BallListAdapter(gameNumbers)
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
         return root
     }
 
     private fun updateNumbers() {
-        gameNumbers = GenerateBallNumbers().setPick4()
+        gameNumbers =  GenerateBallNumbers().setMegaMillion()
         recyclerView.adapter = BallListAdapter(gameNumbers)
     }
+
 }

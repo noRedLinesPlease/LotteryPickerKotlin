@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.example.lotterypickerkotlin.GenerateBallNumbers
 
 class PageViewModel : ViewModel() {
-
      val _index = MutableLiveData<Int>()
      var numbersList = ArrayList<Int>()
 

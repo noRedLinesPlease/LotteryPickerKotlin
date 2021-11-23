@@ -21,12 +21,14 @@ class BallListAdapter(
     }
 
     override fun onBindViewHolder(holder: BallViewHolder, position: Int) {
-            holder.ballTV.text = gameNumbersList[position].toString()
-            holder.extraBallTV.visibility = View.GONE
+
         if (position == 5){
             holder.extraBallTV.visibility = View.VISIBLE
+            holder.ballTV.visibility = View.GONE
             holder.extraBallTV.text = gameNumbersList[position].toString()
-
+        } else{
+            holder.ballTV.text = gameNumbersList[position].toString()
+            holder.extraBallTV.visibility = View.GONE
         }
     }
 

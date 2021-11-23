@@ -6,21 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lotterypickerkotlin.BallListAdapter
 import com.example.lotterypickerkotlin.GenerateBallNumbers
 import com.example.lotterypickerkotlin.R
-import com.example.lotterypickerkotlin.ui.main.PageViewModel
-import com.example.lotterypickerkotlin.ui.main.Utils
+
 
 class Pick3Fragment : Fragment() {
 
     private lateinit var gameNumbers: ArrayList<Int>
     private lateinit var refreshButton: Button
     private lateinit var recyclerView: RecyclerView
-    var testing: Int = Utils.index
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +35,7 @@ class Pick3Fragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
         return root
     }
+
 
     private fun updateNumbers() {
         gameNumbers = GenerateBallNumbers().setPick3()
