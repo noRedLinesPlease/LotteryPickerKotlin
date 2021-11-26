@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lotterypickerkotlin.BallListAdapter
 import com.example.lotterypickerkotlin.GenerateBallNumbers
 import com.example.lotterypickerkotlin.R
-import com.example.lotterypickerkotlin.ui.main.PageViewModel
 
 class Cash4LifeFragment : Fragment() {
 
@@ -33,12 +31,13 @@ class Cash4LifeFragment : Fragment() {
 
         gameNumbers = GenerateBallNumbers().setCash4Life()
         recyclerView.adapter = BallListAdapter(gameNumbers)
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
         return root
     }
 
     private fun updateNumbers() {
-        gameNumbers =  GenerateBallNumbers().setCash4Life()
+        gameNumbers = GenerateBallNumbers().setCash4Life()
         recyclerView.adapter = BallListAdapter(gameNumbers)
     }
 }

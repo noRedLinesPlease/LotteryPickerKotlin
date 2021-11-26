@@ -32,7 +32,8 @@ class Pick3Fragment : Fragment() {
 
         gameNumbers = GenerateBallNumbers().setPick3()
         recyclerView.adapter = BallListAdapter(gameNumbers)
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
         return root
     }
 

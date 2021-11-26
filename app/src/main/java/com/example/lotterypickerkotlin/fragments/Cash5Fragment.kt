@@ -31,12 +31,13 @@ class Cash5Fragment : Fragment() {
 
         gameNumbers = GenerateBallNumbers().setCash5()
         recyclerView.adapter = BallListAdapter(gameNumbers)
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
         return root
     }
 
     private fun updateNumbers() {
-       gameNumbers =  GenerateBallNumbers().setCash5()
+        gameNumbers = GenerateBallNumbers().setCash5()
         recyclerView.adapter = BallListAdapter(gameNumbers)
     }
 }
