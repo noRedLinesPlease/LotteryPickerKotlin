@@ -1,4 +1,4 @@
-package com.example.lotterypickerkotlin.ui.main
+package com.example.lotterypickerkotlin
 
 import android.content.Context
 import androidx.fragment.app.Fragment

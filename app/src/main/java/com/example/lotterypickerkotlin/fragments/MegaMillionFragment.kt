@@ -13,7 +13,7 @@ import com.example.lotterypickerkotlin.GenerateBallNumbers
 import com.example.lotterypickerkotlin.R
 
 class MegaMillionFragment : Fragment() {
-    private lateinit var gameNumbers: ArrayList<Int>
+    private lateinit var gameNumbers: ArrayList<String>
     private lateinit var refreshButton: Button
     private lateinit var recyclerView: RecyclerView
 

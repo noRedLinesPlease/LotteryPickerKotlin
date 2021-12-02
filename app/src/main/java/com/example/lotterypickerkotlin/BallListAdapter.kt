@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class BallListAdapter(
-    private val gameNumbersList: ArrayList<Int>,
+    private val gameNumbersList: ArrayList<String>,
 ) : RecyclerView.Adapter<BallListAdapter.BallViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BallViewHolder {
@@ -25,9 +25,9 @@ class BallListAdapter(
         if (position == 5) {
             holder.extraBallTV.visibility = View.VISIBLE
             holder.ballTV.visibility = View.GONE
-            holder.extraBallTV.text = gameNumbersList[position].toString()
+            holder.extraBallTV.text = gameNumbersList[position]
         } else {
-            holder.ballTV.text = gameNumbersList[position].toString()
+            holder.ballTV.text = gameNumbersList[position]
             holder.extraBallTV.visibility = View.GONE
         }
     }

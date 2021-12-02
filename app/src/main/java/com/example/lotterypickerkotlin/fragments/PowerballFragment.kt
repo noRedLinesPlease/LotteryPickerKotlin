@@ -14,7 +14,7 @@ import com.example.lotterypickerkotlin.R
 
 class PowerballFragment : Fragment() {
 
-    private lateinit var gameNumbers: ArrayList<Int>
+    private lateinit var gameNumbers: ArrayList<String>
     private lateinit var refreshButton: Button
     private lateinit var recyclerView: RecyclerView
 
