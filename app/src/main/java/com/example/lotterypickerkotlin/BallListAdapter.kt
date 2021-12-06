@@ -21,7 +21,6 @@ class BallListAdapter(
     }
 
     override fun onBindViewHolder(holder: BallViewHolder, position: Int) {
-
         if (position == 5) {
             holder.extraBallTV.visibility = View.VISIBLE
             holder.ballTV.visibility = View.GONE

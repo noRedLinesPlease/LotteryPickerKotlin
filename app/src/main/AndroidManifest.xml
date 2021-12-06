@@ -22,7 +22,6 @@
         </activity>
         <activity android:name=".SharedPrefsActivity"
             android:exported="false">
-            <!--Default Intent Filter-->
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
             </intent-filter>
