@@ -6,14 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lotterypickerkotlin.BallListAdapter
-import com.example.lotterypickerkotlin.GenerateBallNumbers
+import com.example.lotterypickerkotlin.MainViewModel
 import com.example.lotterypickerkotlin.R
 
 class MegaMillionFragment : Fragment() {
-    private lateinit var gameNumbers: ArrayList<String>
+    private val mainViewModel by viewModels<MainViewModel>()
+    private lateinit var gameNumbers: ArrayList<Int>
     private lateinit var refreshButton: Button
     private lateinit var recyclerView: RecyclerView
 
@@ -28,7 +30,12 @@ class MegaMillionFragment : Fragment() {
             updateNumbers()
         }
 
-        gameNumbers = GenerateBallNumbers().setMegaMillion()
+        gameNumbers = if (savedInstanceState == null){
+            mainViewModel.setMegaMillion()
+        } else {
+            mainViewModel.gameNumberList
+        }
+
         recyclerView.adapter = BallListAdapter(gameNumbers)
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
@@ -36,7 +43,7 @@ class MegaMillionFragment : Fragment() {
     }
 
     private fun updateNumbers() {
-        gameNumbers = GenerateBallNumbers().setMegaMillion()
+        gameNumbers = mainViewModel.setMegaMillion()
         recyclerView.adapter = BallListAdapter(gameNumbers)
     }
 

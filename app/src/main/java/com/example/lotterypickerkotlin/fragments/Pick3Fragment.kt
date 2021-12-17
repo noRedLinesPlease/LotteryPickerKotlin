@@ -1,24 +1,22 @@
 package com.example.lotterypickerkotlin.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lotterypickerkotlin.*
 
 
 class Pick3Fragment : Fragment() {
-
-    private lateinit var gameNumbers: ArrayList<String>
+    private val mainViewModel by viewModels<MainViewModel>()
+    private lateinit var gameNumbers: ArrayList<Int>
     private lateinit var refreshButton: Button
     private lateinit var recyclerView: RecyclerView
-    private lateinit var saveNumbersButton: Button
-    private lateinit var gotoSharedPrefsButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +29,11 @@ class Pick3Fragment : Fragment() {
         refreshButton.setOnClickListener {
             updateNumbers()
         }
-        gameNumbers = GenerateBallNumbers().setPick3()
+        gameNumbers = if (savedInstanceState == null){
+            mainViewModel.setPick3()
+        } else {
+            mainViewModel.gameNumberList
+        }
         recyclerView.adapter = BallListAdapter(gameNumbers)
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
@@ -39,7 +41,7 @@ class Pick3Fragment : Fragment() {
     }
 
     private fun updateNumbers() {
-        gameNumbers = GenerateBallNumbers().setPick3()
+        gameNumbers = mainViewModel.setPick3()
         recyclerView.adapter = BallListAdapter(gameNumbers)
     }
 }
