@@ -5,7 +5,6 @@ import kotlin.random.Random
 
 class MainViewModel : ViewModel() {
     var gameNumberList = ArrayList<Int>()
-    var test = ArrayList<Int>()
 
     fun setPick3(): ArrayList<Int> {
         gameNumberList.clear()
@@ -123,9 +122,6 @@ class MainViewModel : ViewModel() {
                     }
                 }
             }
-
-            test = gameNumberList
-
 
         return gameNumberList
     }
